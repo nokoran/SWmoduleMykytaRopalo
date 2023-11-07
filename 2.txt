@@ -1,0 +1,13 @@
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbr: <http://dbpedia.org/resource/>
+
+SELECT ?cityName ?cityInceptionYear
+WHERE {
+  ?city a dbo:City ;
+        rdfs:label ?cityName ;
+        dbo:country dbr:Ukraine ;
+        dbp:establishedDate ?cityInceptionYear .
+  FILTER (LANG(?cityName) = 'en')
+}
+ORDER BY DESC(?cityInceptionYear)
+LIMIT 1
